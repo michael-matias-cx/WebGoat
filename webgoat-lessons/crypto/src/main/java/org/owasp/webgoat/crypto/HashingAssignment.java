@@ -50,6 +50,7 @@ public class HashingAssignment extends AssignmentEndpoint {
     public String getMd5(HttpServletRequest request) throws NoSuchAlgorithmException {
 		
 		String md5Hash = (String) request.getSession().getAttribute("md5Hash");
+		md5Hash = HtmlEscapers.htmlEscaper().escape(md5Hash);
 		if (md5Hash == null) {
 			
 			String secret = SECRETS[new Random().nextInt(SECRETS.length)];
@@ -62,7 +63,7 @@ public class HashingAssignment extends AssignmentEndpoint {
 			request.getSession().setAttribute("md5Hash", md5Hash);
 			request.getSession().setAttribute("md5Secret", secret);
 		}
-		String escapedmd5Hash = HtmlEscapers.htmlEscaper().escape(md5Hash);
+		
 		return escapedmd5Hash;
     }
 	
