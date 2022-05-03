@@ -22,6 +22,7 @@
 
 package org.owasp.webgoat.crypto;
 
+import com.google.common.html.HtmlEscapers;
 import org.owasp.webgoat.assignments.AssignmentEndpoint;
 import org.owasp.webgoat.assignments.AssignmentHints;
 import org.owasp.webgoat.assignments.AttackResult;
@@ -61,7 +62,8 @@ public class HashingAssignment extends AssignmentEndpoint {
 			request.getSession().setAttribute("md5Hash", md5Hash);
 			request.getSession().setAttribute("md5Secret", secret);
 		}
-		return md5Hash;
+		String escapedmd5Hash = HtmlEscapers.htmlEscaper().escape(md5Hash);
+		return escapedmd5Hash;
     }
 	
 	@RequestMapping(path="/crypto/hashing/sha256",produces=MediaType.TEXT_HTML_VALUE)
