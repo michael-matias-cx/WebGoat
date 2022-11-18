@@ -39,15 +39,15 @@ steps:
 - task: Application security testing@2022
   continueOnError: true
   inputs:
-    projectName: $(Build.Repository.Name) 
+    projectName: '$(Build.Repository.Name)'
     enableProxy: false
     enableSastScan: false
     enableDependencyScan: true
-    dependencyServerURL: 'https://eu.sca.checkmarx.net/'
+    dependencyServerURL: 'CxSCA'
     scaTeam: 'CxServer/test'
     isEnableScaResolver: true
-    pathToScaResolver: $(Build.Repository.LocalPath)
-    scaResolverAddParameters: '-s $(Build.Repository.LocalPath) -n CxServer/test -r $(Build.Repository.LocalPath) --cxserver https://sast.bpglobal.com --cxuser $(username) --cxpassword $(password) --cxprojectname $(Build.Repository.Name) --sast-result-path $(Build.Repository.LocalPath)/lgv.txt '
+    pathToScaResolver: '$(Build.Repository.LocalPath)'
+    scaResolverAddParameters: '-s $(Build.Repository.LocalPath) -n CxServer/test -r $(Build.Repository.LocalPath) --cxserver https://sast.bpglobal.com --cxuser $(username) --cxpassword $(password) --cxprojectname $(Build.Repository.Name) --sast-result-path $(Build.Repository.LocalPath)/lgv.txt'
 
 
 
