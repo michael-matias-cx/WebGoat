@@ -33,7 +33,6 @@ steps:
     echo Build.SourceBranch $(Build.SourceBranch) 
     echo Build.SourceBranchName $(Build.SourceBranchName) 
     echo System.JobName $(System.JobName) 
-    mkdir 
     
   displayName: 'SCA Resolver download'
 
