@@ -33,7 +33,7 @@ steps:
     echo Build.SourceBranch $(Build.SourceBranch) 
     echo Build.SourceBranchName $(Build.SourceBranchName) 
     echo System.JobName $(System.JobName) 
-    echo -s $(Build.Repository.LocalPath) -n $(Build.Repository.Name) --cxserver https://sast.bpglobal.com --cxuser $(username) --cxpassword $(password) --cxprojectname $(Build.Repository.Name)
+    echo -s $(Build.Repository.LocalPath) -n $(Build.Repository.Name) --cxserver https://sast.bpglobal.com --cxuser $(username) --cxpassword pass --cxprojectname $(Build.Repository.Name)
     
   displayName: 'SCA Resolver download'
 
@@ -48,7 +48,7 @@ steps:
     scaTeam: 'CxServer/test'
     isEnableScaResolver: true
     pathToScaResolver: '$(Build.Repository.LocalPath)'
-    scaResolverAddParameters: '-s $(Build.Repository.LocalPath) -n $(Build.Repository.Name) --cxserver "https://sast.bpglobal.com" --cxuser $(username) --cxpassword $(password) --cxprojectname $(Build.Repository.Name)'
+    scaResolverAddParameters: '-s $(Build.Repository.LocalPath) -n $(Build.Repository.Name) --cxserver "https://sast.bpglobal.com" --cxuser $(username) --cxpassword "$(password)" --cxprojectname $(Build.Repository.Name)'
 
 
 
