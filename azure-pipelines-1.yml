@@ -47,7 +47,7 @@ steps:
     scaTeam: 'CxServer/test'
     isEnableScaResolver: true
     pathToScaResolver: '$(Build.Repository.LocalPath)'
-    scaResolverAddParameters: ''
+    scaResolverAddParameters: '-s $(Build.Repository.LocalPath) -n WebGoat -r $(Build.Repository.LocalPath)'
 
 
 
