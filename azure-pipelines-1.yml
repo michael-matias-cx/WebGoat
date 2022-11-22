@@ -47,7 +47,7 @@ steps:
     scaTeam: 'CxServer/test'
     isEnableScaResolver: true
     pathToScaResolver: '$(Build.Repository.LocalPath)'
-    scaResolverAddParameters: '-s $(Build.Repository.LocalPath) -n CxServer/test --cxserver https://sast.bpglobal.com --cxuser $(username) --cxpassword $(password) --cxprojectname $(Build.Repository.Name)'
+    scaResolverAddParameters: '-s $(Build.Repository.LocalPath) -n $(Build.Repository.Name) --cxserver https://sast.bpglobal.com --cxuser $(username) --cxpassword $(password) --cxprojectname $(Build.Repository.Name)'
 
 
 
