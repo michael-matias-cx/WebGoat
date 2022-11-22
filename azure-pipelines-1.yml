@@ -39,7 +39,7 @@ steps:
 - task: Application security testing@2022
   continueOnError: true
   inputs:
-    projectName: '$(Build.Repository.Name)'
+    projectName: 'WebGoat'
     enableProxy: false
     enableSastScan: false
     enableDependencyScan: true
