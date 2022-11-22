@@ -45,7 +45,7 @@ steps:
     scaTeam: 'CxServer/test'
     isEnableScaResolver: true
     pathToScaResolver: '$(Build.Repository.LocalPath)'
-    scaResolverAddParameters: '-s $(Build.Repository.LocalPath) -n WebGoat -r $(Build.Repository.LocalPath) --cxserver https://sast.bpglobal.com --cxuser $username --cxpassword $password --cxprojectname WebGoat'
+    scaResolverAddParameters: '-s $(Build.Repository.LocalPath) -n WebGoat -r $(Build.Repository.LocalPath)'
 
 
 
