@@ -45,7 +45,7 @@ steps:
     scaTeam: 'CxServer/test'
     isEnableScaResolver: true
     pathToScaResolver: '$(Build.Repository.LocalPath)'
-    scaResolverAddParameters: '-s $(Build.Repository.LocalPath) -n WebGoat -r $(Build.Repository.LocalPath) --scan-tags foo:bar --project-tags release:true'
+    scaResolverAddParameters: '-s $(Build.Repository.LocalPath) -n WebGoat -r $(Build.Repository.LocalPath)'
 
 
 
