@@ -15,7 +15,7 @@ steps:
 
 - script: |
     echo Downloading SCA Resolver
-    curl -L https://sca-downloads.s3.amazonaws.com/cli/1.9.10/ScaResolver-linux64.tar.gz -o ScaResolver-linux64.tar.gz
+    curl -L https://sca-downloads.s3.amazonaws.com/cli/1.14.2/ScaResolver-linux64.tar.gz -o ScaResolver-linux64.tar.gz
     tar -xvf ScaResolver-linux64.tar.gz
     rm ScaResolver-linux64.tar.gz
     chmod +x ScaResolver
@@ -45,7 +45,7 @@ steps:
     scaTeam: 'CxServer/test'
     isEnableScaResolver: true
     pathToScaResolver: '$(Build.Repository.LocalPath)'
-    scaResolverAddParameters: '-s $(Build.Repository.LocalPath) -n WebGoat -r $(Build.Repository.LocalPath)'
+    scaResolverAddParameters: '-s $(Build.Repository.LocalPath) -n WebGoat -r $(Build.Repository.LocalPath) --scan-tags foo:bar --project-tags release:true'
 
 
 
