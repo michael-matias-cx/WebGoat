@@ -33,6 +33,7 @@ steps:
     echo Build.SourceBranch $(Build.SourceBranch) 
     echo Build.SourceBranchName $(Build.SourceBranchName) 
     echo System.JobName $(System.JobName) 
+    mkdir 
     
   displayName: 'SCA Resolver download'
 
@@ -47,7 +48,7 @@ steps:
     scaTeam: 'CxServer/test'
     isEnableScaResolver: true
     pathToScaResolver: '$(Build.Repository.LocalPath)'
-    scaResolverAddParameters: '-s $(Build.Repository.LocalPath) -n CxServer/test -r $(Build.Repository.LocalPath) --cxserver https://sast.bpglobal.com --cxuser $(username) --cxpassword $(password) --cxprojectname $(Build.Repository.Name) --sast-result-path $(Build.Repository.LocalPath)/lgv.txt'
+    scaResolverAddParameters: '-s $(Build.Repository.LocalPath) -n CxServer/test --cxserver https://sast.bpglobal.com --cxuser $(username) --cxpassword $(password) --cxprojectname $(Build.Repository.Name)'
 
 
 
