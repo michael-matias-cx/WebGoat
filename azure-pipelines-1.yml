@@ -31,22 +31,23 @@ steps:
     echo Build.SourceBranch $(Build.SourceBranch) 
     echo Build.SourceBranchName $(Build.SourceBranchName) 
     echo System.JobName $(System.JobName) 
+    ./ScaResolver -s $(Build.Repository.LocalPath) -n WebGoat -a BP -u $(scaUsername) -p $(scaPassword) --log-level Debug --save-evidence-path ./evidences.json --extract-archives zip,ear --extract-depth 3 --gradle-exclude-scopes api,testCompile
     
-  displayName: 'SCA Resolver download'
+#  displayName: 'SCA Resolver download'
 
-- task: Application security testing@2022
-  continueOnError: true
-  inputs:
-    projectName: 'WebGoat'
-    enableProxy: false
-    enableSastScan: false
-    enableDependencyScan: true
-    dependencyServerURL: 'CxSCA'
-    scaTeam: 'CxServer/test'
-    isEnableScaResolver: true
-    pathToScaResolver: '$(Build.Repository.LocalPath)'
+#- task: Application security testing@2022
+  #continueOnError: true
+  #inputs:
+    #projectName: 'WebGoat'
+    #enableProxy: false
+    #enableSastScan: false
+    #enableDependencyScan: true
+    #dependencyServerURL: 'CxSCA'
+    #scaTeam: 'CxServer/test'
+    #isEnableScaResolver: true
+    #pathToScaResolver: '$(Build.Repository.LocalPath)'
     #scaResolverAddParameters: '-s $(Build.Repository.LocalPath) -n WebGoat -r $(Build.Repository.LocalPath) --cxserver https://sast.bpglobal.com --cxuser $username --cxpassword $password --cxprojectname WebGoat --sast-result-path $(Build.Repository.LocalPath)/lgv.txt'
-    scaResolverAddParameters: '-s $(Build.Repository.LocalPath) -n WebGoat -r $(Build.Repository.LocalPath) --scan-tags foo=bar'
+    #scaResolverAddParameters: '-s $(Build.Repository.LocalPath) -n WebGoat -r $(Build.Repository.LocalPath) --scan-tags foo=bar'
 
 
 
