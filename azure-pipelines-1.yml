@@ -31,7 +31,8 @@ steps:
     echo Build.SourceBranch $(Build.SourceBranch) 
     echo Build.SourceBranchName $(Build.SourceBranchName) 
     echo System.JobName $(System.JobName) 
-    ./ScaResolver -s $(Build.Repository.LocalPath) -n WebGoat -a BP -u $(scaUsername) -p $(scaPassword) --log-level Debug --save-evidence-path ./evidences.json --extract-archives zip,ear --extract-depth 3 --gradle-exclude-scopes api,testCompile
+    cat Configuration.yml
+    #./ScaResolver -s $(Build.Repository.LocalPath) -n WebGoat -a BP -u $(scaUsername) -p $(scaPassword) --log-level Debug --save-evidence-path ./evidences.json --extract-archives zip,ear --extract-depth 3 --gradle-exclude-scopes api,testCompile
     
 #  displayName: 'SCA Resolver download'
 
