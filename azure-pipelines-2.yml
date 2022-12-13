@@ -1,0 +1,60 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+- group: MyVarGroup
+- name: my-passed-variable
+  value: $[variables.MyVar]
+- name: vSAST_URL
+  value: $[variables.SAST_URL] 
+- name: vSAST_USER
+  value: $[variables.SAST_USER] 
+- name: vSAST_PASSWORD
+  value: $[variables.SAST_PASSWORD] 
+- name: vADO_PAT
+  value: $[variables.ADO_PAT] 
+
+stages:
+- stage: Security
+  jobs:
+  - job: CxFlow
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+            wget -O cxflow.jar https://github.com/checkmarx-ltd/cx-flow/releases/download/1.6.19/cx-flow-1.6.19.jar
+            java -version
+            whoami
+            pwd 
+            echo $(MyVar)
+            echo $(vSAST_URL)
+            echo $(vSAST_USER)
+            echo $(vSAST_PASSWORD)
+            echo $(vADO_PAT)
+            #java -jar cxflow.jar --spring.config.location="./application_ADO_Powershell.yml" --project  --cx-project="LGV_OneFile_ADO_CxFlow" --alt-project="LGV_OneFile_ADO_CxFlow" --namespace="$(System.TeamProject)" --repo-name="$(Build.Repository.Name)" --branch="$(Build.SourceBranchName)"
+            # Reference https://github.com/checkmarx-ltd/cx-flow/wiki/Execution#command
+            java -jar cxflow.jar \
+                   --spring.config.location="$(Build.Repository.LocalPath)/app_sca.yml"  \
+                   --scan \
+                   --f=. \
+                   --cx-project="Cx-$(System.TeamProject)" \
+                   --exclude-files="*.jar" \
+                   --alt-project="$(System.TeamProject)" \
+                   --namespace="LuisGarciaViejo" \
+                   --repo-name="$(Build.Repository.Name)" \
+                   --branch="$(Build.SourceBranchName)" \
+                   --cxflow.enabled-vulnerability-scanners=sast \
+                   --checkmarx.base-url=$(vSAST_URL) \
+                   --checkmarx.username=$(vSAST_USER) \
+                   --checkmarx.password=$(vSAST_PASSWORD) \
+                   --azure.token=$(vADO_PAT) \
+                   --cxflow.bug-tracker-impl=Azure \
+                   --cxflow.bug-tracker=Azure
