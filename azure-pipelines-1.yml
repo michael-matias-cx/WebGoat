@@ -31,7 +31,7 @@ steps:
     echo Build.SourceBranch $(Build.SourceBranch) 
     echo Build.SourceBranchName $(Build.SourceBranchName) 
     echo System.JobName $(System.JobName) 
-    ./ScaResolver -s $(Build.Repository.LocalPath) -n WebGoat -a BP -u $(scaUsername) -p $(scaPassword) --server-url https://eu.api-sca.checkmarx.net --authentication-server-url https://eu.platform.checkmarx.net --sca-app-url https://eu.sca.checkmarx.net --log-level Debug --save-evidence-path ./evidences.json --extract-archives zip,ear --extract-depth 3 --gradle-exclude-scopes api,testCompile --scan-tags foo:bar dog:cat keyvaluetest:worksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworksworks --bypass-exitcode --cxserver https://sast.bpglobal.com --cxuser $username --cxpassword $password --cxprojectname WebGoat
+    ./ScaResolver -s $(Build.Repository.LocalPath) -n WebGoat -a BP -u $(scaUsername) -p $(scaPassword) --server-url https://eu.api-sca.checkmarx.net --authentication-server-url https://eu.platform.checkmarx.net --sca-app-url https://eu.sca.checkmarx.net --log-level Debug --save-evidence-path ./evidences.json --extract-archives zip,ear --extract-depth 3 --gradle-exclude-scopes api,testCompile --scan-tags foo:bar dog:cat RepoID:1b1e417c-68dd-454b-b19f-37f7b371178f\;1b1e417c-68dd-454b-b19f-37f7b371178f --bypass-exitcode --cxserver https://sast.bpglobal.com --cxuser $username --cxpassword $password --cxprojectname WebGoat
     
 #  displayName: 'SCA Resolver download'
 
